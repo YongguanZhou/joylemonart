@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { SITE } from "../site";
+const siteTitle = SITE.title;
+const tagline = SITE.description;
+
+---
+<BaseLayout title={siteTitle} description={tagline}>
+ 
+ <main class="page-home">
+
+  <section class="w-1-c">
+    <img
+    src="/images/W-0.png"
+    alt="Joy Lemon Art header image"
+    loading="eager"
+  />
+  <img src="/images/w-1-c.png" alt="Joy Lemon Art showcase" loading="eager" />
+</section>
+
+<section class="slideshow">
+  <div class="slideshow-viewport">
+    <img src="/images/P-1.png" alt="Joy Lemon Art 作品一" class="slide active" />
+    <img src="/images/P-2.png" alt="Joy Lemon Art 作品二" class="slide" />
+    <img src="/images/P-3.png" alt="Joy Lemon Art 作品三" class="slide" />
+    <img src="/images/P-4.png" alt="Joy Lemon Art 作品四" class="slide" />
+    <img src="/images/P-5.png" alt="Joy Lemon Art 作品五" class="slide" />
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 5000); // 每 3 秒切换
+</script>
+
+
+  <section class="card">
+    <h1>{siteTitle}</h1>
+    <p class="small">{tagline}</p>
+    <p>
+      JOY LEMON ART STUDIO is a creative art space where children are encouraged to explore, imagine, and express their inner world through art. We believe every child is a natural artist, possessing a unique creative voice and endless imagination.
+Created by artists for young artists, our studio offers a warm and inspiring environment that respects individuality and celebrates creativity. Through art exploration, children engage their senses, discover beauty, and express genuine feelings through color, form, and creative drawing.
+At JOY LEMON ART STUDIO, we nurture creativity as a way of self-expression—helping children discover their talents and tell their own stories through art.
+JOY LEMON ART STUDIO
+    </p>
+    <p>
+    艺术空间旨在提供一个让孩子释放心灵光芒的艺术场所，坚信每个孩子都是一位天生的艺术家，拥有无限的创造力和想象力。
+    我们尊重每个孩子的独特个性，珍视孩子独特的创造力，通过引导孩子们了解文化和艺术家的故事，激发他们的艺术创意和思维创造力。
+    在这里，我们鼓励孩子运用感官去感受美，了解美、创造美，并通过艺术手法表达内心真实感受。我们强调孩子的创意和创造力的培养，引导他们用创意表现美、表现心灵，以及用创意绘画来表达自己内心深处的感受。
+    我们鼓励他们在这个创意的空间里，发现自己的才华，用色彩和形状诉说属于他们的故事。
+    </p>
+    <p>
+      <a class="button" href="/contact">Contact / Register</a>
+    </p>
+  </section>
+
+  </div>
+  </section>
+
+  </main>
+  
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import { SITE } from "../site";
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE.title}` : SITE.title;
+const pageDesc = description ?? SITE.description;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="Home">
+          <img class="brand-logo" src={SITE.assets.logo} alt={`${SITE.title} logo`} />
+        </a>
+
+        <div class="contact-block">
+          <div>{SITE.contact.address}</div>
+          <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+          <a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`}>{SITE.contact.phone}</a>
+        </div>
+      </div>
+
+       <!-- 你原来的导航如果在这里，就保留；没有就先不管 -->
+      <nav class="nav">
+        <a href="/">主页</a>
+        <a href="/programs/season-one-2026">课程与项目</a>
+        <a href="/programs/winter-camp-2025">艺术营期</a>
+        <a href="/programs/party">生日派对</a>
+        <a href="/gallery/painting">艺术画廊</a>
+        <a href="/contact">联系我们</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div>© {new Date().getFullYear()} · All rights reserved</div>
+    </footer>
+  </body>
+</html>

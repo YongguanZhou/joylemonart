@@ -1,0 +1,350 @@
+:root {
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", serif;
+  --font-sans: "Source Han Sans SC", "Noto Sans SC", "PingFang SC",
+               "Microsoft YaHei", sans-serif;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --card: #f9fafb;
+  --max: 980px;
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.brand-title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.nav-link {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  border-color: var(--border);
+  background: var(--card);
+}
+
+.main {
+  padding: 28px 0 56px;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0.6em 0 0.4em;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.1rem; }
+
+p { margin: 0.6em 0; color: var(--text); }
+.small { color: var(--muted); font-size: 0.95rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .header-inner { align-items: flex-start; }
+  .nav { justify-content: flex-start; }
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #111827;
+  color: white;
+}
+
+.button:hover {
+  text-decoration: none;
+  opacity: 0.92;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.footer-title {
+  font-weight: 700;
+}
+
+.footer-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.footer-link {
+  color: var(--muted);
+}
+
+.footer-link:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.topbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 18px 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 288px;     /* 你可以改成 48 / 56 / 72 */
+  width: auto;
+  display: block;
+}
+
+.contact-block a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-block a:hover {
+  text-decoration: underline;
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 18px 18px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-weight: 600;
+}
+
+.nav a {
+  font-family: var(--font-serif);
+  color: #111;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+}
+
+.site-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Top-right contact block (address / email / phone) */
+.contact-block {
+  text-align: left;
+  font-size: 22px;
+  line-height: 1.7;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: #1308ea;
+
+  margin: 0;            /* 删掉你现在的 margin-top/right */
+  padding-top: 38px;    /* 往下：用 padding 更合理 */
+  max-width: 540px;     /* 防止太宽 */
+}
+
+
+
+/* 让三行“像一组信息”，间距更舒服 */
+.contact-block > * {
+  display: block;
+  margin: 2px 0;
+}
+
+/* 链接不要默认的蓝色下划线，看起来更像官网 */
+.contact-block a {
+  color: inherit;           /* 跟上面的 #222 保持一致 */
+  text-decoration: none;
+}
+
+/* 鼠标经过再给一点反馈 */
+.contact-block a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 重点突出电话（更符合家长行为） */
+.contact-block a:last-child {
+  font-size: 22px;          /* 电话再大一点 */
+  font-weight: 650;
+  letter-spacing: 0.6px;
+}
+
+/* Home page showcase image (only on Home) */
+.W-0 {
+  max-width: 1300px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+.W-0 img {
+  width: 100%;
+  height: auto;        /* 想更高就 320/360 */
+  object-fit: contain;    /* 不变形，自动裁剪 */
+  display: block;
+  border-radius: 18px;
+  margin-bottom: 24px;
+}
+
+/* Home page showcase image (only on Home) */
+.w-1-c {
+  max-width: 1300px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+.w-1-c img {
+  width: 100%;
+  height: auto;        /* 想更高就 320/360 */
+  object-fit: contain;    /* 不变形，自动裁剪 */
+  display: block;
+  border-radius: 18px;
+  margin-bottom: 24px;
+}
+
+.slideshow {
+  max-width: 1300px;   /* 👈 你要的宽度限制 */
+  margin: 28px auto 0;
+  padding: 0 16px;
+}
+
+.slideshow-viewport {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: auto;        /* 👈 高度随图片 */
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active {
+  position: relative; /* 只有当前那张参与布局 */
+  opacity: 1;
+}
+
+
+/* Mobile */
+@media (max-width: 520px) {
+  .slideshow-viewport {
+    height: 240px;
+  }
+}
+
+/* 首页背景渐变 */
+.page-home {
+  position: relative;
+}
+
+/* 全宽背景层 */
+.page-home::before {
+  content: "";
+  position: absolute;
+
+  /* 👇 关键 3 行 */
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 0;
+  bottom: 0;
+
+  background-image: url("/images/bg-gradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+
+  opacity: 0.3;
+  z-index: -1;
+}
+

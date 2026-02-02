@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../site";
+
+// 你以后主要改下面这些信息即可
+const studio = {
+  name: SITE.title,
+  email: "hello@yourdomain.com",
+  phone: "+1 (604) 000-0000",
+  addressLine1: "Vancouver, BC",
+  addressLine2: "Canada",
+  instagram: "https://instagram.com/yourhandle",
+  registrationLink: "https://forms.gle/your-form-link",
+};
+---
+
+<BaseLayout title={`Contact | ${studio.name}`} description="Contact and registration information">
+  <section class="card">
+    <h1>Contact</h1>
+    <p class="small">
+      Questions about programs, camps, or parties? Reach out anytime.
+    </p>
+
+    <div class="grid grid-2" style="margin-top:12px;">
+      <div class="card" style="box-shadow:none;">
+        <h2 style="margin-top:0;">Email</h2>
+        <p><a href={`mailto:${studio.email}`}>{studio.email}</a></p>
+
+        <h2>Phone</h2>
+        <p><a href={`tel:${studio.phone}`}>{studio.phone}</a></p>
+      </div>
+
+      <div class="card" style="box-shadow:none;">
+        <h2 style="margin-top:0;">Studio</h2>
+        <p>{studio.addressLine1}<br />{studio.addressLine2}</p>
+
+        <h2>Instagram</h2>
+        <p><a href={studio.instagram} target="_blank" rel="noreferrer">Visit Instagram</a></p>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <a class="button" href={studio.registrationLink} target="_blank" rel="noreferrer">
+        Registration / Inquiry Form
+      </a>
+    </div>
+
+    <p class="small" style="margin-top:12px;">
+      Tip: You can replace the form link with Calendly/Acuity/Bookeo later if you want scheduling.
+    </p>
+  </section>
+</BaseLayout>
