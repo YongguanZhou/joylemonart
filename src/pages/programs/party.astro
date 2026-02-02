@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../site";
+---
+
+<BaseLayout title={`生日派对 | ${SITE.title}`} description={SITE.description}>
+  <main class="page-home">
+
+    <section
+      class="w-1-c"
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 1300px;
+        margin: 0 auto;
+      "
+    >
+      <img
+        src="/images/Party01.png"
+        alt="Birthday Party Information"
+        loading="eager"
+        style="width: 100%;"
+      />
+
+      <img
+        src="/images/Party02.png"
+        alt="Party Time"
+        loading="eager"
+        style="width: 100%;"
+      />
+    </section>
+
+  </main>
+</BaseLayout>

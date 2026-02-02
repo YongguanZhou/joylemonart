@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../site";
+---
+
+<BaseLayout title={`艺术营期 | ${SITE.title}`} description={SITE.description}>
+  <main class="page-home">
+
+    <section
+      class="w-1-c"
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 1300px;
+        margin: 0 auto;
+      "
+    >
+      <img
+        src="/images/AC-0-C.png"
+        alt="Art Camp 1"
+        loading="eager"
+        style="width: 100%;"
+      />
+
+      <img
+        src="/images/AC-1-C.png"
+        alt="Art Camp 2"
+        loading="eager"
+        style="width: 100%;"
+      />
+
+      <img
+        src="/images/AC-2-C.png"
+        alt="Art Camp 3"
+        loading="eager"
+        style="width: 100%;"
+      />
+    </section>
+
+  </main>
+</BaseLayout>

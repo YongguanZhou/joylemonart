@@ -1,12 +1,13 @@
 {
-  "name": "fnu-site",
+  "name": "Joylemonart",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && git add -A && git commit -m \"Update website\" && git push"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../site";
+---
+
+<BaseLayout title={`课程与项目 | ${SITE.title}`} description={SITE.description}>
+  <main class="page-home">
+
+    <!-- 顶部图片 -->
+    <section
+      style="
+        max-width: 1300px;
+        margin: 0 auto 32px;
+      "
+    >
+      <img
+        src="/images/cp-0.png"
+        alt="Courses Overview"
+        style="width: 100%;"
+        loading="eager"
+      />
+    </section>
+
+    <!-- 幻灯片 -->
+    <section
+      style="
+        max-width: 1300px;
+        margin: 0 auto 32px;
+        position: relative;
+      "
+    >
+      <img
+        id="slider-image"
+        src="/images/L1.png"
+        alt="Course Slide"
+        style="
+        width: 100%;
+        opacity: 1;
+        transition: opacity 0.8s ease-in-out;
+        "
+      />
+    </section>
+
+    <!-- 底部图片 -->
+    <section
+      style="
+        max-width: 1300px;
+        margin: 0 auto;
+      "
+    >
+      <img
+        src="/images/2026-1.png"
+        alt="2026 Program"
+        style="width: 100%;"
+        loading="lazy"
+      />
+    </section>
+
+  </main>
+
+  <!-- 简单轮播脚本（纯前端，Cloudflare Pages 安全） -->
+  <script>
+    const images = [
+      "/images/L1.png",
+      "/images/L2.png",
+      "/images/L3.png",
+    ];
+
+    let index = 0;
+    const slider = document.getElementById("slider-image");
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      slider.src = images[index];
+    }, 5000);
+  </script>
+</BaseLayout>
+
