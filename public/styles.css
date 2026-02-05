@@ -42,16 +42,57 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.2px;
 }
 
+/* 导航按钮（胶囊） */
 .nav-link {
-  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
   border-radius: 999px;
-  border: 1px solid transparent;
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  color: #111;
+  text-decoration: none;
+
+  /* ✅ 默认就是淡黄色按钮 */
+  background: rgba(255, 225, 120, 0.55);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+
+  transition: background 160ms ease,
+              border-color 160ms ease,
+              transform 160ms ease,
+              box-shadow 160ms ease;
 }
+
 
 .nav-link:hover {
   text-decoration: none;
-  border-color: var(--border);
-  background: var(--card);
+  background: rgba(255, 225, 120, 0.75);
+  border-color: rgba(17, 24, 39, 0.18);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+
+/* Active：按下反馈 */
+.nav-link:active {
+  transform: translateY(0px);
+}
+
+/* 当前页高亮：无需 JS，用 aria-current */
+.nav-link[aria-current="page"] {
+  background: rgba(255, 225, 120, 0.45);      /* 柠檬黄的轻高亮 */
+  border-color: rgba(17, 24, 39, 0.16);
+}
+
+/* 可选：键盘可访问性 */
+.nav-link:focus-visible {
+  outline: 3px solid rgba(255, 225, 120, 0.9);
+  outline-offset: 2px;
 }
 
 .main {
@@ -71,12 +112,14 @@ p { margin: 0.6em 0; color: var(--text); }
 .small { color: var(--muted); font-size: 0.95rem; }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 18px;
+  padding-right: 18px;
 }
+
+
 
 .grid {
   display: grid;
@@ -163,31 +206,21 @@ p { margin: 0.6em 0; color: var(--text); }
   display: block;
 }
 
-.contact-block a {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.contact-block a:hover {
-  text-decoration: underline;
-}
-
 .nav {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 18px 18px;
   display: flex;
+  gap: 14px;
   justify-content: center;
-  gap: 22px;
-  font-weight: 600;
+  align-items: center;
+  flex-wrap: wrap;           /* 桌面也允许换行，避免太挤 */
+  padding: 6px 0 0px;       /* 收紧 nav 的上下空白 */
 }
+
 
 .nav a {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);   /* ← 黑体 */
   color: #111;
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;                /* ← 加粗 */
   letter-spacing: 0.4px;
   padding: 8px 14px;
   border-radius: 999px;
@@ -201,7 +234,7 @@ p { margin: 0.6em 0; color: var(--text); }
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px 18px 60px;
+  padding: 0px 18px 60px;
 }
 
 .site-footer {
@@ -212,52 +245,49 @@ p { margin: 0.6em 0; color: var(--text); }
   font-size: 14px;
 }
 
-/* Top-right contact block (address / email / phone) */
+/* 右上角联系方式：去掉 padding-top / 夸张字号 / !important */
 .contact-block {
-  text-align: left;
-  font-size: 22px;
-  line-height: 1.7;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  color: #1308ea;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.35;        /* ✅ 让三行更紧凑 */
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  color: #111;
 
-  margin: 0;            /* 删掉你现在的 margin-top/right */
-  padding-top: 38px;    /* 往下：用 padding 更合理 */
-  max-width: 540px;     /* 防止太宽 */
+  margin: 0;
+  padding: 0;               /* ✅ 关键：不要再 padding-top:38px */
+  max-width: 520px;
 }
 
-
-
-/* 让三行“像一组信息”，间距更舒服 */
 .contact-block > * {
   display: block;
-  margin: 2px 0;
+  margin: 2px 0;            /* ✅ 行间距更小 */
 }
 
-/* 链接不要默认的蓝色下划线，看起来更像官网 */
 .contact-block a {
-  color: inherit;           /* 跟上面的 #222 保持一致 */
+  color: inherit;
   text-decoration: none;
 }
 
-/* 鼠标经过再给一点反馈 */
 .contact-block a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* 重点突出电话（更符合家长行为） */
+
+/* 电话不要巨大，但要略突出 */
 .contact-block a:last-child {
-  font-size: 22px;          /* 电话再大一点 */
+  font-size: 16px;          /* ✅ 你说“不要那么大”，这里控制住 */
   font-weight: 650;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.4px;
 }
 
 /* Home page showcase image (only on Home) */
 .W-0 {
   max-width: 1300px;
-  margin: 16px auto 0;
-  padding: 0 16px;
+  margin: 8px auto 0;
+  padding: 16px 16px;
 }
 
 .W-0 img {
@@ -267,13 +297,15 @@ p { margin: 0.6em 0; color: var(--text); }
   display: block;
   border-radius: 18px;
   margin-bottom: 24px;
+  
 }
 
 /* Home page showcase image (only on Home) */
 .w-1-c {
   max-width: 1300px;
   margin: 16px auto 0;
-  padding: 0 16px;
+  padding: 16px 16px;
+  
 }
 
 .w-1-c img {
@@ -343,7 +375,7 @@ p { margin: 0.6em 0; color: var(--text); }
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-
+  
   opacity: 0.3;
   z-index: -1;
 }

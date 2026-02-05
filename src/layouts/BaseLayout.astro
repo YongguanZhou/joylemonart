@@ -18,27 +18,51 @@ const pageDesc = description ?? SITE.description;
 
   <body>
     <header class="site-header">
-      <div class="topbar">
+      <!-- ===== Header: Logo + Tagline + CTA + Contact ===== -->
+      <div class="topbar header-shell">
         <a class="brand" href="/" aria-label="Home">
-          <img class="brand-logo" src={SITE.assets.logo} alt={`${SITE.title} logo`} />
+          <img
+            class="brand-logo"
+            src={SITE.assets.logo}
+            alt={`${SITE.title} logo`}
+          />
         </a>
 
-        <div class="contact-block">
-          <div>{SITE.contact.address}</div>
-          <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
-          <a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`}>{SITE.contact.phone}</a>
+        <div class="header-right">
+          <div class="brand-copy">
+            <div class="tagline">
+              少儿美术启蒙与作品集辅导｜温哥华西区
+            </div>
+            <div class="tagline-sub">
+              小班教学 · 中文沟通 · 注重创作表达与基础能力
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <a class="cta" href="/contact">预约咨询</a>
+
+            <div class="contact-block">
+              <div>{SITE.contact.address}</div>
+              <a href={`mailto:${SITE.contact.email}`}>
+                {SITE.contact.email}
+              </a>
+              <a href={`tel:${SITE.contact.phone.replace(/\s+/g, "")}`}>
+                {SITE.contact.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-       <!-- 你原来的导航如果在这里，就保留；没有就先不管 -->
-      <nav class="nav">
-        <a href="/">主页</a>
-        <a href="/programs/courses">课程与项目</a>
-        <a href="/programs/camps">艺术营期</a>
-        <a href="/programs/party">生日派对</a>
-        <a href="/gallery/paintings">艺术画廊</a>
-        <a href="/contact">联系我们</a>
+      <nav class="nav nav-shell" aria-label="Primary navigation">
+       <a class="nav-link" href="/">主页</a>
+       <a class="nav-link" href="/programs/courses">课程与项目</a>
+       <a class="nav-link" href="/programs/camps">艺术营期</a>
+       <a class="nav-link" href="/programs/party">生日派对</a>
+       <a class="nav-link" href="/gallery/painting">艺术画廊</a>
+       <a class="nav-link" href="/contact">联系我们</a>
       </nav>
+
     </header>
 
     <main class="container">
@@ -50,3 +74,152 @@ const pageDesc = description ?? SITE.description;
     </footer>
   </body>
 </html>
+
+<!-- ================= GLOBAL HEADER STYLES ================= -->
+<style is:global>
+  /* ===== A. Header Layout ===== */
+
+  .site-header {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+  .header-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 18px 0px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  /* Logo：已放大，作为品牌锚点 */
+  .brand-logo {
+    height: 120px; /* ← 放大后的定稿值 */
+    width: auto;
+    display: block;
+  }
+
+  .header-right {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 22px;
+    align-items: start;
+  }
+
+  /* 品牌文案区 */
+  .brand-copy {
+    padding-top: 0px;
+  }
+
+  .tagline {
+    font-family: var(--font-sans);
+    font-size: 28px;       /* ← 放大 */
+    line-height: 1.25;
+    color: #111;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  .tagline-sub {
+    font-family: var(--font-sans);
+    font-size: 20px;       /* ← 放大 */
+    line-height: 1.6;
+    color: rgba(17, 24, 39, 0.72);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    margin-top: 8px;
+  }
+
+  /* 右侧 CTA + 联系方式 */
+  .header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0px;
+    padding-top: 0px;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(17, 24, 39, 0.14);
+    background: rgba(255, 225, 120, 0.95);
+    color: #111;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  .cta:hover {
+    text-decoration: none;
+    opacity: 0.95;
+  }
+
+  /* ===== Navigation ===== */
+
+  .nav-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0px 18px 14px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+  }
+
+  /* ===== Responsive ===== */
+
+  @media (max-width: 860px) {
+    .header-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .header-right {
+      grid-template-columns: 1fr;
+    }
+
+    .header-actions {
+      align-items: flex-start;
+    }
+
+    .nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .brand-logo {
+      height: 96px;
+    }
+
+    .tagline {
+      font-size: 20px;
+    }
+
+    .tagline-sub {
+      font-size: 14px;
+    }
+
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .nav a {
+      white-space: nowrap;
+      font-size: 18px;
+    }
+  }
+</style>
+
