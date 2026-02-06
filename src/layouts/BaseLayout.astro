@@ -199,26 +199,28 @@ const pageDesc = description ?? SITE.description;
 
   @media (max-width: 640px) {
     .brand-logo {
-      height: 96px;
+      height: 48px;
     }
 
     .tagline {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .tagline-sub {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .nav {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
     }
 
     .nav a {
       white-space: nowrap;
-      font-size: 18px;
+      font-size: 12px;
     }
   }
 </style>

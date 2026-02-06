@@ -380,3 +380,22 @@ p { margin: 0.6em 0; color: var(--text); }
   z-index: -1;
 }
 
+@media (max-width: 640px) {
+  .nav-link {
+    align-self: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 1.1;
+    
+  }
+}
+
+@media (max-width: 640px) {
+  /* ✅ 只隐藏这两个：预约咨询 + 联系方式块 */
+  .header-actions .cta,
+  .header-actions .contact-block {
+    display: none;
+  }
+}
