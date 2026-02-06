@@ -23,7 +23,7 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&out
         padding: 28px 12px 36px;
       "
     >
-      <!-- ✅ 两栏布局：用 inline 写死，避免任何全局 CSS 干扰 -->
+      <!-- ✅ 两栏布局 -->
       <div
         style="
           display: grid;
@@ -32,8 +32,8 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&out
           align-items: start;
         "
       >
-        <!-- 左侧：联系方式 -->
-        <div>
+        <!-- 左侧：联系方式 + 底部图片（放进左栏里） -->
+        <div style="min-width: 0;">
           <h1
             style="
               margin: 0 0 10px;
@@ -46,7 +46,6 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&out
           </h1>
 
           <p style="margin: 0 0 22px; font-size: 20px; font-weight: 600;">
-             
           </p>
 
           <div style="margin: 14px 0;">
@@ -67,9 +66,27 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&out
             <div style="font-size: 22px; font-weight: 800; margin-bottom: 6px;">Address:</div>
             <div style="font-size: 22px; line-height: 1.35;">{address}</div>
           </div>
+
+          <!-- ✅ 关键：把图片放在左边文字下面 -->
+          <div
+            style="
+              margin-top: 26px;
+              max-width: 500px;
+            "
+          >
+            <img
+              src="/images/contact.png"
+              alt="contact"
+              loading="lazy"
+              style="
+                width: 100%;
+                display: block;
+              "
+            />
+          </div>
         </div>
 
-        <!-- 右侧：地图（强制占满右侧列） -->
+        <!-- 右侧：地图 -->
         <div style="width: 100%; min-width: 0;">
           <div
             style="
